@@ -16,8 +16,11 @@ RAW_DIR = "data/raw"
 def compute_sha256(filepath: str) -> str:
     sha = hashlib.sha256()
     with open(filepath, "rb") as f:
-        while chunk := f.read(8192):
-            sha.update(chunk)
+        content = f.read()
+    # Normalize CRLF to LF for cross-platform text/json/tsv stability
+    if filepath.endswith((".tsv", ".json", ".csv", ".txt", ".md")):
+        content = content.replace(b"\r\n", b"\n")
+    sha.update(content)
     return sha.hexdigest()
 
 def verify_all_datasets() -> Tuple[bool, Dict[str, Dict]]:
