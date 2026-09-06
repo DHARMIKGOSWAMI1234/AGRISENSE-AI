@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: smriti_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-smriti_admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-smriti_secure_password_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-smriti_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - smriti_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U smriti_admin -d smriti_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - smriti_network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: smriti_backend
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgresql://smriti_admin:smriti_secure_password_dev@db:5432/smriti_db
+      - ENVIRONMENT=development
+      - DEBUG=True
+      - SECRET_KEY=${SECRET_KEY:-smriti_super_secret_development_key_change_in_production_2026_sih}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - ./ml:/ml
+    networks:
+      - smriti_network
+
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    container_name: smriti_dashboard
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000/api/v1
+    depends_on:
+      - backend
+    volumes:
+      - ./dashboard:/app
+      - /app/node_modules
+    networks:
+      - smriti_network
+
+volumes:
+  smriti_pgdata:
+    driver: local
+
+networks:
+  smriti_network:
+    driver: bridge

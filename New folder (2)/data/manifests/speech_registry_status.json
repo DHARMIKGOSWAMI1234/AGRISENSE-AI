@@ -1,0 +1,81 @@
+{
+  "registry": {
+    "mozilla_common_voice": {
+      "name": "Mozilla Common Voice Corpus (Indic Subsets: as, hi, bn)",
+      "version": "v17.0+",
+      "source_url": "https://commonvoice.mozilla.org/ & https://huggingface.co/datasets/mozilla-foundation/common_voice_17_0",
+      "license": "CC0 Public Domain",
+      "access": "Open Access (Direct / HuggingFace)",
+      "languages": [
+        "as (Assamese)",
+        "hi (Hindi)",
+        "bn (Bengali)"
+      ],
+      "purpose": "VOICE / ASR BENCHMARK (Benchmarking elderly command recognition)",
+      "gated": false
+    },
+    "ai4bharat_indicvoices": {
+      "name": "AI4Bharat IndicVoices",
+      "version": "v1.0.0",
+      "source_url": "https://huggingface.co/datasets/ai4bharat/IndicVoices",
+      "license": "CC-BY 4.0",
+      "access": "Gated Repository (HuggingFace Terms Acceptance Required)",
+      "languages": [
+        "as (Assamese - 100+ hrs)",
+        "hi (Hindi - 150+ hrs)"
+      ],
+      "purpose": "ASR BENCHMARK (Regional dialect and elderly acoustic modeling)",
+      "gated": true,
+      "token_env_var": "HF_TOKEN"
+    },
+    "ai4bharat_indicvoices_r": {
+      "name": "AI4Bharat IndicVoices-R (Expressive Speech Corpus)",
+      "version": "v1.0",
+      "source_url": "https://huggingface.co/datasets/ai4bharat/indicvoices_r",
+      "license": "Academic / Non-Commercial Research",
+      "access": "Open / HuggingFace Gated",
+      "languages": [
+        "as (Assamese)",
+        "hi (Hindi)"
+      ],
+      "purpose": "TTS BENCHMARK (Expressive prosody & slow elderly cadence calibration)",
+      "gated": true,
+      "token_env_var": "HF_TOKEN"
+    },
+    "talkbank_dementiabank": {
+      "name": "TalkBank DementiaBank (Pitt Corpus - Cookie Theft Description Task)",
+      "version": "2024 Release",
+      "source_url": "https://dementia.talkbank.org/",
+      "license": "Access-Controlled Research Use Agreement",
+      "access": "RESTRICTED - Requires Institutional DUA & TalkBank Password Authorization",
+      "languages": [
+        "en (English clinical benchmark)"
+      ],
+      "purpose": "RESEARCH-ONLY (Clinical acoustic & lexical biomarker reference - NOT COMMITTED)",
+      "gated": true,
+      "requires_institutional_dua": true
+    }
+  },
+  "environment_status": {
+    "mozilla_common_voice": {
+      "status": "OPEN_ACCESS",
+      "ready": true,
+      "note": "Public open access dataset."
+    },
+    "ai4bharat_indicvoices": {
+      "status": "TOKEN_REQUIRED",
+      "ready": false,
+      "note": "Export HF_TOKEN='<your_token>' with accepted terms at https://huggingface.co/datasets/ai4bharat/IndicVoices to download full audio splits."
+    },
+    "ai4bharat_indicvoices_r": {
+      "status": "TOKEN_REQUIRED",
+      "ready": false,
+      "note": "Export HF_TOKEN='<your_token>' with accepted terms at https://huggingface.co/datasets/ai4bharat/indicvoices_r to download full audio splits."
+    },
+    "talkbank_dementiabank": {
+      "status": "RESEARCH-ONLY / ACCESS-CONTROLLED",
+      "ready": false,
+      "note": "Requires formal TalkBank IRB approval and institutional login credentials. No unauthorized scraping permitted."
+    }
+  }
+}

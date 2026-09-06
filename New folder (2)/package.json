@@ -1,0 +1,16 @@
+{
+  "name": "smriti-platform",
+  "version": "1.0.0",
+  "description": "SMRITI: AI-Powered Cognitive Gaming and Memory Assistance Platform for Elderly Dementia Patients in NER (SIH 2026)",
+  "scripts": {
+    "dev": "npm --prefix dashboard run dev",
+    "dashboard": "npm --prefix dashboard run dev",
+    "build:dashboard": "npm --prefix dashboard run build",
+    "backend": "python -m uvicorn app.main:app --app-dir backend --reload --port 8000",
+    "ml:train": "python -m ml.training.train",
+    "ml:eval": "python -m ml.evaluation.evaluate",
+    "test:backend": "pytest -v backend/tests/",
+    "test:ml": "python -m unittest discover -s ml/tests -p \"test_*.py\"",
+    "test:mobile": "flutter test --directory mobile"
+  }
+}

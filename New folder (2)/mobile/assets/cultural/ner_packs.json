@@ -1,0 +1,79 @@
+{
+  "pack_id": "ner_master_pack_v1",
+  "version": "1.0.0",
+  "region": "North Eastern Region (India)",
+  "items": [
+    {
+      "id": "japi",
+      "category": "household_traditional",
+      "name_en": "Japi (Traditional Hat)",
+      "name_as": "জাপি",
+      "name_hi": "जापी (पारंपरिक टोपी)",
+      "symbol": "👒",
+      "region_tags": ["ASSAM", "NER"]
+    },
+    {
+      "id": "gamusa",
+      "category": "textiles",
+      "name_en": "Gamosa / Gamusa",
+      "name_as": "গামোচা",
+      "name_hi": "गमोसा",
+      "symbol": "🧣",
+      "region_tags": ["ASSAM", "NER"]
+    },
+    {
+      "id": "sarai",
+      "category": "household_brass",
+      "name_en": "Xorai (Bell Metal Tray)",
+      "name_as": "শৰাই",
+      "name_hi": "सराई (पारंपरिक थाली)",
+      "symbol": "🏆",
+      "region_tags": ["ASSAM", "NER"]
+    },
+    {
+      "id": "pitha",
+      "category": "food",
+      "name_en": "Pitha (Rice Cake)",
+      "name_as": "পিঠা",
+      "name_hi": "पीठा",
+      "symbol": "🥟",
+      "region_tags": ["ASSAM", "BENGAL", "NER"]
+    },
+    {
+      "id": "bamboo_basket",
+      "category": "craft",
+      "name_en": "Bamboo Basket",
+      "name_as": "বাঁহৰ খৰাহী",
+      "name_hi": "बांस की टोकरी",
+      "symbol": "🧺",
+      "region_tags": ["MEGHALAYA", "MIZORAM", "ASSAM", "NAGALAND"]
+    },
+    {
+      "id": "dhol",
+      "category": "music",
+      "name_en": "Bihu Dhol (Drum)",
+      "name_as": "ঢোল",
+      "name_hi": "ढोल",
+      "symbol": "🥁",
+      "region_tags": ["ASSAM", "NER"]
+    },
+    {
+      "id": "tea_leaf",
+      "category": "nature",
+      "name_en": "Assam Tea Leaves",
+      "name_as": "চাহ পাত",
+      "name_hi": "चाय पत्ती",
+      "symbol": "🍃",
+      "region_tags": ["ASSAM", "TRIPURA", "NER"]
+    },
+    {
+      "id": "traditional_khorahi",
+      "category": "kitchen",
+      "name_en": "Khorahi (Cane Strainer)",
+      "name_as": "খৰাহী",
+      "name_hi": "खोराही",
+      "symbol": "🪴",
+      "region_tags": ["ASSAM", "NER"]
+    }
+  ]
+}

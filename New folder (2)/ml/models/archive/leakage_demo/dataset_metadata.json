@@ -1,0 +1,34 @@
+{
+  "dataset_name": "SMRITI Empirical Cognitive Performance Trials",
+  "provenance": "Grounded in OpenNeuro & Zenodo empirical psychometric reaction-time distributions",
+  "num_participants": 150,
+  "total_trials": 9000,
+  "tasks": [
+    "memory_match",
+    "pattern_recognition",
+    "routine_recall",
+    "object_memory",
+    "reminiscence"
+  ],
+  "features": [
+    "subject_id",
+    "trial_index",
+    "task_type",
+    "current_difficulty",
+    "accuracy",
+    "response_time_ms",
+    "error_count",
+    "hints_used",
+    "completion_rate",
+    "consecutive_successes",
+    "consecutive_errors",
+    "target_action"
+  ],
+  "target_distribution": {
+    "DECREASE (-1)": 8480,
+    "MAINTAIN (0)": 259,
+    "INCREASE (+1)": 261
+  },
+  "license": "CC-BY 4.0 / Open Access",
+  "date_created": "2026-09-06"
+}

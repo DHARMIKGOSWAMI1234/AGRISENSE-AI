@@ -1,0 +1,163 @@
+{
+  "dataset": "OpenNeuro ds000164 (Stroop) + ds000102 (Flanker)",
+  "provenance_verified": true,
+  "synthetic_subjects_used": false,
+  "deterministic_target_leakage": false,
+  "cross_validation": "5-Fold GroupKFold by Participant ID (Zero Subject Leakage)",
+  "tasks": {
+    "reaction_time_regression": {
+      "task_name": "Cognitive_Reaction_Time_Regression",
+      "task_type": "regression",
+      "target": "response_time_ms",
+      "features": [
+        "is_cognitive_conflict",
+        "cumulative_trial_num",
+        "prev_response_time_ms",
+        "prev_accuracy",
+        "task_is_stroop"
+      ],
+      "sample_count": 4526,
+      "subject_count": 54,
+      "results": {
+        "Dummy_Mean_Baseline": {
+          "MAE_ms": 147.88,
+          "RMSE_ms": 195.78,
+          "R2": -0.0054
+        },
+        "Linear_Regression": {
+          "MAE_ms": 129.49,
+          "RMSE_ms": 174.33,
+          "R2": 0.1929
+        },
+        "Ridge_Regression": {
+          "MAE_ms": 129.49,
+          "RMSE_ms": 174.33,
+          "R2": 0.1929
+        },
+        "Random_Forest_Regressor": {
+          "MAE_ms": 126.45,
+          "RMSE_ms": 170.85,
+          "R2": 0.2268
+        },
+        "Gradient_Boosting_Regressor": {
+          "MAE_ms": 127.51,
+          "RMSE_ms": 172.3,
+          "R2": 0.2144
+        }
+      },
+      "best_model_name": "Random_Forest_Regressor"
+    },
+    "conflict_classification": {
+      "task_name": "Cognitive_Conflict_Classification",
+      "task_type": "classification",
+      "target": "is_cognitive_conflict",
+      "features": [
+        "response_time_ms",
+        "accuracy",
+        "prev_response_time_ms",
+        "cumulative_trial_num",
+        "task_is_stroop"
+      ],
+      "sample_count": 4525,
+      "subject_count": 54,
+      "results": {
+        "Dummy_Stratified_Baseline": {
+          "Accuracy": 0.5419,
+          "Balanced_Accuracy": 0.5004,
+          "Macro_F1": 0.5002,
+          "Precision_Class_0": 0.6461,
+          "Recall_Class_0": 0.6428,
+          "Precision_Class_1": 0.3544,
+          "Recall_Class_1": 0.3577,
+          "Confusion_Matrix": [
+            [
+              1879,
+              1044
+            ],
+            [
+              1029,
+              573
+            ]
+          ]
+        },
+        "Logistic_Regression": {
+          "Accuracy": 0.6826,
+          "Balanced_Accuracy": 0.5974,
+          "Macro_F1": 0.5924,
+          "Precision_Class_0": 0.7005,
+          "Recall_Class_0": 0.8888,
+          "Precision_Class_1": 0.6017,
+          "Recall_Class_1": 0.3065,
+          "Confusion_Matrix": [
+            [
+              2598,
+              325
+            ],
+            [
+              1111,
+              491
+            ]
+          ]
+        },
+        "Random_Forest_Classifier": {
+          "Accuracy": 0.6822,
+          "Balanced_Accuracy": 0.609,
+          "Macro_F1": 0.6096,
+          "Precision_Class_0": 0.7099,
+          "Recall_Class_0": 0.859,
+          "Precision_Class_1": 0.583,
+          "Recall_Class_1": 0.3596,
+          "Confusion_Matrix": [
+            [
+              2511,
+              412
+            ],
+            [
+              1026,
+              576
+            ]
+          ]
+        },
+        "Gradient_Boosting_Classifier": {
+          "Accuracy": 0.6828,
+          "Balanced_Accuracy": 0.6143,
+          "Macro_F1": 0.6165,
+          "Precision_Class_0": 0.7142,
+          "Recall_Class_0": 0.8488,
+          "Precision_Class_1": 0.5794,
+          "Recall_Class_1": 0.3801,
+          "Confusion_Matrix": [
+            [
+              2481,
+              442
+            ],
+            [
+              993,
+              609
+            ]
+          ]
+        },
+        "Extra_Trees_Classifier": {
+          "Accuracy": 0.6767,
+          "Balanced_Accuracy": 0.5774,
+          "Macro_F1": 0.5614,
+          "Precision_Class_0": 0.6871,
+          "Recall_Class_0": 0.9172,
+          "Precision_Class_1": 0.6116,
+          "Recall_Class_1": 0.2378,
+          "Confusion_Matrix": [
+            [
+              2681,
+              242
+            ],
+            [
+              1221,
+              381
+            ]
+          ]
+        }
+      },
+      "best_model_name": "Gradient_Boosting_Classifier"
+    }
+  }
+}
