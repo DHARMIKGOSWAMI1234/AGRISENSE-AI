@@ -4,9 +4,14 @@ SMRITI Real-World Cognitive Model Training & Benchmark Pipeline
 Trains and evaluates scientifically defensible ML models on real OpenNeuro cognitive data
 (ds000164 Stroop & ds000102 Flanker: 4,585 empirical trials across 54 subjects).
 
-Valid ML Tasks:
-1. Task A (Regression): Reaction-Time (RT) Prediction under Cognitive Conflict & Fatigue
-2. Task B (Classification): Cognitive Conflict / Mental Interference State Classification
+Tasks:
+1. Task A (Regression): Empirical Response-Latency Prediction under Cognitive Conflict
+   - Role: Tier 1 behavioral research/calibration (Informs initial engineering ranges)
+   - NOT: Clinical prediction, Dementia diagnosis/prediction, or Game difficulty prediction
+2. Task B (Classification): Cognitive Conflict Classification Benchmark
+   - Role: Retained as a reproducible behavioral classification benchmark demonstrating
+     that the pipeline can learn an observed experimental condition from behavioral signals.
+     It is NOT used to make patient-facing decisions.
 
 Validation Scheme: 5-Fold GroupKFold by Participant ID (Zero Subject Leakage)
 Preprocessing: Fitted strictly within cross-validation training folds (Zero Preprocessing Contamination)
@@ -57,8 +62,9 @@ def load_clean_data(data_path: str = DATA_PATH) -> pd.DataFrame:
 
 def train_and_benchmark_regression_task(df: pd.DataFrame) -> Dict[str, Any]:
     """
-    Task A: Reaction-Time (RT) Prediction under Cognitive Conflict & Fatigue Dynamics
-    Target: response_time_ms (observed continuous milliseconds)
+    Task A: Empirical Response-Latency Prediction under Cognitive Conflict
+    Role: Tier 1 behavioral research/calibration (NOT clinical / NOT dementia / NOT difficulty prediction)
+    Target: response_time_ms (observed continuous milliseconds from scanner button press)
     Features: is_cognitive_conflict, cumulative_trial_num, prev_response_time_ms, prev_accuracy, task_is_stroop
     """
     feature_cols = [
@@ -151,7 +157,10 @@ def train_and_benchmark_regression_task(df: pd.DataFrame) -> Dict[str, Any]:
 
 def train_and_benchmark_classification_task(df: pd.DataFrame) -> Dict[str, Any]:
     """
-    Task B: Cognitive Conflict / Interference Demand Classification
+    Task B: Cognitive Conflict Classification Research Benchmark
+    Role: Retained as a reproducible behavioral classification benchmark demonstrating
+          that the pipeline can learn an observed experimental condition from behavioral signals.
+          It is NOT used to make patient-facing decisions.
     Target: is_cognitive_conflict (1 = Incongruent trial, 0 = Congruent/Neutral trial)
     Features: response_time_ms, accuracy, prev_response_time_ms, cumulative_trial_num, task_is_stroop
     """

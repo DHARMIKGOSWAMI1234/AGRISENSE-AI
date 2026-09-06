@@ -66,5 +66,6 @@ Reaction times were recorded in raw BIDS event files as seconds ($s$) and standa
 
 ## 5. Audit Conclusion & Compliance Status
 - **Zero Synthetic Subjects**: No `SUBJ_NER_...` or simulated records exist in the training pipeline.
-- **Provenance Cryptographically Verified**: 85 raw BIDS files verified against OpenNeuro GitHub master snapshots with SHA-256 hashes.
+- **Provenance Cryptographically Verified**: 85 raw BIDS files verified against OpenNeuro master snapshots with SHA-256 hashes.
 - **Genuine Empirical Targets**: Regression ($RT\text{ in ms}$) and classification (Cognitive conflict $0/1$) are directly observed in experimental logs without deterministic mathematical derivation.
+- **Non-Clinical Reference Boundary**: These OpenNeuro datasets provide empirical healthy-adult behavioral reference distributions for reaction time and cognitive interference. They may inform initial engineering ranges and experimental parameterization, but they are not representative of elderly dementia populations and must not be interpreted as clinical normative thresholds. Production timeout parameters must remain configurable.

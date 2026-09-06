@@ -4,11 +4,19 @@
 All machine learning and empirical calibration in SMRITI relies on authentic, cryptographically verified datasets downloaded directly from open-science archives. 
 
 > [!IMPORTANT]
-> **Retraction & Provenance Proof**:
-> - Previous placeholder accession `ds000000` has been **PERMANENTLY REMOVED**.
-> - Accession `ds003775` (SRM Resting-State EEG, Hatlestad-Hall et al.) contains resting EEG rather than active behavioral trial events and has been **REMOVED** from cognitive task behavioral modeling.
-> - The replacement datasets are **OpenNeuro ds000164** (Stroop Task, Verstynen 2014) and **OpenNeuro ds000102** (Flanker Task, Kelly et al. 2008).
-> - All 85 behavioral files have been downloaded and verified via SHA-256 hashes against OpenNeuro master trees.
+> **Scientific Scope & Non-Clinical Disclaimer**:
+> The OpenNeuro datasets provide empirical healthy-adult behavioral reference distributions for reaction time and cognitive interference. These data may inform initial engineering ranges and experimental parameterization, but they are not representative of elderly dementia populations and must not be interpreted as clinical normative thresholds.
+>
+> OpenNeuro models:
+> - DO NOT diagnose dementia.
+> - DO NOT predict dementia.
+> - DO NOT predict SMRITI game difficulty.
+> - DO NOT predict the correct next difficulty.
+> - DO NOT establish elderly dementia response-time norms.
+> - DO NOT establish clinical timeout thresholds.
+> - DO NOT demonstrate clinical efficacy.
+>
+> Production timeout parameters must remain configurable. Future validation must come from elderly usability testing, caregiver/user feedback, safe in-app telemetry where consented, and future research datasets where legally and ethically appropriate.
 
 ---
 
@@ -18,7 +26,7 @@ All machine learning and empirical calibration in SMRITI relies on authentic, cr
 1. **Exact Accession:** `ds000164`
 2. **Exact Title as Published:** `Stroop Task`
 3. **Official DOI:** `10.18112/openneuro.ds000164.v1.0.0`
-4. **Dataset Version / Snapshot:** `v1.0.0`
+4. **Dataset Version / Snapshot:** `1.0.0`
 5. **Exact Downloadable Behavioral Files:** `sub-001/func/sub-001_task-stroop_events.tsv` through `sub-028/func/sub-028_task-stroop_events.tsv` (28 files)
 6. **BIDS Paths:** `data/raw/openneuro_ds000164_stroop/sub-*/func/*_events.tsv`
 7. **Raw Columns in `events.tsv`:** `onset`, `duration`, `correct`, `condition`, `response_time`
@@ -39,7 +47,7 @@ All machine learning and empirical calibration in SMRITI relies on authentic, cr
 1. **Exact Accession:** `ds000102`
 2. **Exact Title as Published:** `Flanker task (event-related)`
 3. **Official DOI:** `10.18112/openneuro.ds000102.v1.0.0`
-4. **Dataset Version / Snapshot:** `v1.0.0rc3`
+4. **Dataset Version / Snapshot:** `1.0.0rc3`
 5. **Exact Downloadable Behavioral Files:** `sub-01/func/sub-01_task-flanker_run-1_events.tsv` through `sub-26/func/sub-26_task-flanker_run-2_events.tsv` (52 files)
 6. **BIDS Paths:** `data/raw/openneuro_ds000102_flanker/sub-*/func/*_events.tsv`
 7. **Raw Columns in `events.tsv`:** `onset`, `duration`, `trial_type`, `response_time`, `correctness`, `StimVar`, `Rsponse`, `Stimulus`, `cond`

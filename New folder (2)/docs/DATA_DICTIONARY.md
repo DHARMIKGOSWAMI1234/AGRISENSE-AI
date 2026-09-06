@@ -27,9 +27,9 @@ This Data Dictionary defines every field across the raw cognitive datasets (Open
 | `raw_duration_sec` | float | RAW EXTERNAL FIELD | `duration` | Duration of stimulus presentation | Seconds ($s$) | Stimulus exposure |
 | `raw_response_time_sec` | float | RAW EXTERNAL FIELD | `response_time` | Latency from stimulus onset to button press | Seconds ($s$) | Raw reaction time |
 | `correct` / `correctness` | string | RAW EXTERNAL FIELD | `correct` / `correctness` | Raw response correctness string | `'Y'`/`'N'` or `'correct'`/`'incorrect'` | Raw accuracy |
-| `response_time_ms` | float | DERIVED FIELD | $RT_{\text{sec}} \times 1000$ | Standardized reaction time in milliseconds | Milliseconds ($ms$, $296 - 2294\text{ ms}$) | **Target (Regression)** / Calibrator |
+| `response_time_ms` | float | DERIVED FIELD | $RT_{\text{sec}} \times 1000$ | Standardized reaction time in milliseconds | Milliseconds ($ms$, $296 - 2294\text{ ms}$) | **Target (Task A: Empirical RT Regression)** |
 | `accuracy` | float | DERIVED FIELD | Parsed correctness | Binary correctness indicator | `1.0` (Correct), `0.0` (Error) | Performance feature |
-| `is_cognitive_conflict` | integer | DERIVED FIELD | Condition mapping | High cognitive conflict / interference indicator | `1` (Incongruent), `0` (Congruent/Neutral) | **Target (Classification)** |
+| `is_cognitive_conflict` | integer | DERIVED FIELD | Condition mapping | High cognitive conflict / interference indicator | `1` (Incongruent), `0` (Congruent/Neutral) | **Target (Task B: Research Benchmark Only — NOT Patient-Facing)** |
 | `prev_response_time_ms` | float | ENGINEERED FEATURE | Lag-1 of `response_time_ms` | Reaction time on immediately preceding trial | Milliseconds ($ms$) | Cognitive state & post-error slowing |
 | `prev_accuracy` | float | ENGINEERED FEATURE | Lag-1 of `accuracy` | Accuracy on immediately preceding trial | `1.0`, `0.0` | Post-error behavioral adaptation |
 | `cumulative_trial_num` | integer | ENGINEERED FEATURE | Cumulative count | Total trials completed so far in run | $1, 2, \dots, 60+$ | Pacing & cognitive fatigue index |
@@ -53,4 +53,4 @@ This Data Dictionary defines every field across the raw cognitive datasets (Open
 | `occurred_at` | timestamp | RAW TELEMETRY | SQLite / PostgreSQL | Timestamp of session completion | ISO-8601 UTC | Temporal tracking |
 | `rule_action` | integer | RULE TELEMETRY | SQLite / PostgreSQL | Tier 0 rule engine difficulty step | `-1` (DECREASE), `0` (MAINTAIN), `+1` (INCREASE) | Production action |
 | `rule_reason_code` | string | RULE TELEMETRY | SQLite / PostgreSQL | Explicit explainability reason | `"HIGH_SUCCESS_RATE"`, `"LOW_ACCURACY"`, etc. | Explainability audit |
-| `next_difficulty_completion_success` | integer | FUTURE TARGET | Observed next session | Observed completion of next session at adjusted level | `1` (Success), `0` (Failure / Abandonment) | **Future Tier 2 ML Target** |
+| `next_difficulty_completion_success` | integer | PROPOSED FUTURE TARGET | Observed next session | Observed completion of next session at adjusted level | `1` (Success), `0` (Failure / Abandonment) | **Proposed Future Tier 2 ML Target (NOT trained today)** |

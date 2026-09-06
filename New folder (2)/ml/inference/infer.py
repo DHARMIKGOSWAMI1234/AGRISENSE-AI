@@ -68,8 +68,12 @@ class AdaptiveInferenceEngine:
 
 class EmpiricalCognitiveEstimator:
     """
-    Tier 1 Empirical Cognitive ML Model Ingested from OpenNeuro Corpora.
-    Estimates expected reaction latency and detects cognitive conflict demand.
+    Tier 1 Empirical Cognitive Research & Calibration Models Ingested from OpenNeuro Corpora.
+    - Task A: Empirical healthy-adult response latency estimator (Informs initial engineering ranges).
+    - Task B: Behavioral conflict classification benchmark (Retained for pipeline evaluation; NOT patient-facing).
+
+    DISCLAIMER: These models provide empirical healthy-adult behavioral reference distributions.
+    They DO NOT establish clinical dementia norms, DO NOT predict game difficulty, and DO NOT make clinical decisions.
     """
     def __init__(
         self,

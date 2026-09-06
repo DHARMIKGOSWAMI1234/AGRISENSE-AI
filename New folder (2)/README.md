@@ -15,12 +15,24 @@ $$\text{Engage} \longrightarrow \text{Measure} \longrightarrow \text{Personalize
 
 ---
 
-## 🏛️ Multi-Tier ML & Cognitive Calibration Architecture
+## 🤖 WHAT THE AI DOES TODAY
+
+1. **SMRITI records real in-app gameplay performance**: Captures objective session latency, accuracy, error streaks, hint usage, and completion metrics.
+2. **Tier 0 rule engine evaluates recent performance**: Deterministic, clinical threshold rules evaluate recent patient engagement trends locally on device and backend.
+3. **The system adjusts difficulty using explainable rules**: Every step up (`INCREASE`), down (`DECREASE`), or maintain (`MAINTAIN`) produces a transparent clinical reason code (e.g., `HIGH_SUCCESS_RATE`, `LOW_ACCURACY`, `FATIGUE_DETECTED`, `REPEATED_ERRORS`).
+4. **Tier 1 research models provide behavioral calibration / reference analysis**: Real OpenNeuro datasets (`ds000164` Stroop & `ds000102` Flanker) provide empirical healthy-adult behavioral reference distributions to inform engineering parameters.
+5. **NO model diagnoses dementia**: SMRITI enforces an absolute non-diagnostic medical boundary.
+6. **NO model claims clinical efficacy**: Models are not medical devices.
+7. **Future adaptive ML requires sufficient genuine consented SMRITI telemetry**: Tier 2 personalization models will only be trained when longitudinal consented in-app interaction data is gathered with independent observational outcomes (`next_difficulty_completion_success`).
+
+---
+
+## 🏛️ Multi-Tier Architecture
 
 SMRITI strictly separates clinical decision logic, open-science empirical calibration, and future consented machine learning:
 
 1. **Tier 0 (Production Decision Engine):** Explainable, deterministic rule engine running locally on device and backend with structured audit reason codes (`HIGH_SUCCESS_RATE`, `LOW_ACCURACY`, `SLOW_RESPONSE`, `REPEATED_ERRORS`, `FATIGUE_DETECTED`, `MAINTAIN_CURRENT_LEVEL`).
-2. **Tier 1 (Empirical Cognitive Calibration):** Ingested 4,585 empirical behavioral trials from **OpenNeuro** (`ds000164` Stroop Task, 28 subjects; `ds000102` Flanker Task, 26 subjects) to calibrate realistic elderly response latency cutoffs and benchmark behavioral ML.
+2. **Tier 1 (Empirical Cognitive Calibration & Research Benchmarks):** Ingested 4,585 empirical behavioral trials from **OpenNeuro** (`ds000164` Stroop Task, 28 subjects; `ds000102` Flanker Task, 26 subjects) to provide empirical healthy-adult reference distributions. *These data may inform initial engineering ranges and experimental parameterization, but they are not representative of elderly dementia populations and must not be interpreted as clinical normative thresholds.*
 3. **Tier 2 (Future Consented In-App ML):** Continuous pseudonymized telemetry stream (`/api/v1/game-sessions`) collecting consented longitudinal patient interactions to train future personalization models against an independent observational target (`next_difficulty_completion_success`).
 
 ```text
